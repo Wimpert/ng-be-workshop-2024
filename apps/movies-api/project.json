@@ -28,6 +28,37 @@
       "options": {
         "jestConfig": "apps/movies-api/jest.config.ts"
       }
+    },
+
+    "build": {
+      "defaultConfiguration": "production",
+      "configurations": {
+        "production": {
+          "externalDependencies": [
+            "@nestjs/microservices",
+            "@nestjs/microservices/microservices-module",
+            "@nestjs/websockets/socket-module",
+            "class-transformer",
+            "class-validator",
+            "cache-manager",
+            "cache-manager/package.json"
+          ],
+          "assets": [
+            "apps/movies-api/src/assets",
+            "apps/movies-api/src/fly.toml",
+            "apps/movies-api/src/Dockerfile",
+            "apps/movies-api/src/.dockerignore"
+          ]
+        }
+      }
+    },
+    "fly-deploy": {
+      "executor": "@nx:executor",
+      "options": {
+        "command": "echo hello"
+      },
+      "dependsOn": ["build"],
+      "defaultConfiguration": "production"
     }
   }
 }

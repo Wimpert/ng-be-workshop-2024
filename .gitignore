@@ -45,3 +45,4 @@ Thumbs.db
 
 vite.config.*.timestamp*
 apps/movies-app/.local.env
+apps/movies-api/.env.local
