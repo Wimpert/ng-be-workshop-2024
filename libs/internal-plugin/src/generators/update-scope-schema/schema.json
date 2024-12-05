@@ -3,6 +3,5 @@
   "$id": "UpdateScopeSchema",
   "title": "",
   "type": "object",
-  "properties": {},
-  "required": ["name"]
+  "properties": {}
 }
