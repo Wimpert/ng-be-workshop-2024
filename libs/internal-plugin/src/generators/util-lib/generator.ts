@@ -12,7 +12,9 @@ export async function utilLibGenerator(
   tree: Tree,
   options: UtilLibGeneratorSchema
 ) {
-  await libraryGenerator(tree, { directory: options.name });
+  const preFix = 'util-';
+  console.log('The name is: ', options.name);
+  await libraryGenerator(tree, { directory: `${preFix}${options.name}` });
   await formatFiles(tree);
 }
 
