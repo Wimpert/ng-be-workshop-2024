@@ -16,10 +16,9 @@
     "directory": {
       "description": "The directory of the new project",
       "type": "string",
-      "enum": ["movies", "api", "shared"],
+      "enum": ["api", "movies", "shared"],
       "x-prompt": "The directory of the new project?"
     }
   },
-
   "required": ["name"]
 }

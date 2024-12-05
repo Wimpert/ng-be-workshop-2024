@@ -12,17 +12,20 @@ export async function updateScopeSchemaGenerator(
   options: UpdateScopeSchemaGeneratorSchema
 ) {
   console.log('Updating scope schema...');
-
   console.log('options:', options);
-
   const projectMap = getProjects(tree);
   const scopes = getScopes(projectMap);
   console.log('scopes:', scopes);
 
-  updateJson(tree, 'nx.json', (json) => ({
-    ...json,
-    defaultProject: 'movies-app',
-  }));
+  updateJson(
+    tree,
+    'libs/internal-plugin/src/generators/util-lib/schema.json',
+    (json) => {
+      json.properties.directory.enum = Array.from(scopes);
+      return json;
+    }
+  );
+
   await formatFiles(tree);
 }
 
