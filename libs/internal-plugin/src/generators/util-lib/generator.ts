@@ -10,7 +10,7 @@ import { UtilLibGeneratorSchema } from './schema';
 
 export async function utilLibGenerator(
   tree: Tree,
-  options: UtilLibGeneratorSchema & { directory: string }
+  options: UtilLibGeneratorSchema
 ) {
   const preFix = 'util-';
   const directory = options.directory || options.name;
