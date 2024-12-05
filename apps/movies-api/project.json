@@ -53,10 +53,7 @@
       }
     },
     "fly-deploy": {
-      "executor": "@nx:executor",
-      "options": {
-        "command": "echo hello"
-      },
+      "executor": "@nx-workshop/internal-plugin:fly-deploy",
       "dependsOn": ["build"],
       "defaultConfiguration": "production"
     }

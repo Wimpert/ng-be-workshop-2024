@@ -1,4 +1,4 @@
-app = 'ng-be-miro-24'
+app = 'movies-api-wim-holvoet'
 primary_region = 'lax'
 
 [build]
