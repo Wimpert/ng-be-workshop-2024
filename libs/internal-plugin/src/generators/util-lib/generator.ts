@@ -10,11 +10,15 @@ import { UtilLibGeneratorSchema } from './schema';
 
 export async function utilLibGenerator(
   tree: Tree,
-  options: UtilLibGeneratorSchema
+  options: UtilLibGeneratorSchema & { directory: string }
 ) {
   const preFix = 'util-';
-  console.log('The name is: ', options.name);
-  await libraryGenerator(tree, { directory: `${preFix}${options.name}` });
+  const directory = options.directory || options.name;
+  console.log('The name is: ', `${preFix}${options.name}`);
+  console.log('The directory is', options.directory);
+  await libraryGenerator(tree, {
+    directory: `${directory}/${preFix}${options.name}`,
+  });
   await formatFiles(tree);
 }
 

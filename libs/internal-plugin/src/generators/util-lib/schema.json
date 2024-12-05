@@ -12,7 +12,15 @@
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+
+    "directory": {
+      "description": "The directory of the new project",
+      "type": "string",
+      "enum": ["movies", "api", "shared"],
+      "x-prompt": "The directory of the new project?"
     }
   },
+
   "required": ["name"]
 }
