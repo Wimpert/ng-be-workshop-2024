@@ -27,7 +27,11 @@ module.exports = [
           depConstraints: [
             {
               sourceTag: 'scope:movies',
-              onlyDependOnLibsWithTags: ['scope:movies', 'scope:shared'],
+              onlyDependOnLibsWithTags: ['scope:movies', 'scope:shared' ],
+            },
+            {
+              sourceTag: 'scope:api',
+              onlyDependOnLibsWithTags: ['scope:api', 'scope:shared' ],
             },
             {
               sourceTag: 'scope:shared',
