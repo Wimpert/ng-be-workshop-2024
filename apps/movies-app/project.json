@@ -41,7 +41,13 @@
               "maximumError": "20kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/movies-app/src/environments/environment.ts",
+              "with": "apps/movies-app/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,
