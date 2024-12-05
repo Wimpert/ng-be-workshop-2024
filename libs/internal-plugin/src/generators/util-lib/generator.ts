@@ -17,7 +17,7 @@ export async function utilLibGenerator(
   console.log('The name is: ', `${preFix}${options.name}`);
   console.log('The directory is', options.directory);
   await libraryGenerator(tree, {
-    directory: `${directory}/${preFix}${options.name}`,
+    directory: `libs/${directory}/${preFix}${options.name}`,
     tags: `type:util, scope:${directory}`,
   });
   await formatFiles(tree);
