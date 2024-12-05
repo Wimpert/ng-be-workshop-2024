@@ -17,14 +17,16 @@ export async function updateScopeSchemaGenerator(
   const scopes = getScopes(projectMap);
   console.log('scopes:', scopes);
 
-  updateJson(
-    tree,
-    'libs/internal-plugin/src/generators/util-lib/schema.json',
-    (json) => {
-      json.properties.directory.enum = Array.from(scopes);
-      return json;
-    }
-  );
+  const base = 'libs/internal-plugin/src/generators/util-lib';
+
+  const content = tree.read(`${base}/schema.d.ts`)?.toString();
+  const newContent = replaceScope(content, scopes);
+  tree.write(`${base}/schema.d.ts`, newContent);
+
+  updateJson(tree, `${base}/schema.json`, (json) => {
+    json.properties.directory.enum = Array.from(scopes);
+    return json;
+  });
 
   await formatFiles(tree);
 }
@@ -43,4 +45,19 @@ function getScopes(projectMap: Map<string, ProjectConfiguration>) {
     }
   });
   return scopes;
+}
+
+function replaceScope(content: string, scopes: Set<string>) {
+  const joinScopes = Array.from(scopes)
+    .map((s) => `'${s}'`)
+    .join(' | ');
+  console.log('joinScopes:', joinScopes);
+  const PATTERN = /interface UtilLibGeneratorSchema \{\n.*\n.*\n\}/gm;
+  return content.replace(
+    PATTERN,
+    `interface UtilLibGeneratorSchema {
+  name: string;
+  directory: ${joinScopes};
+}`
+  );
 }
