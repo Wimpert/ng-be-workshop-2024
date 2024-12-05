@@ -1,3 +1,1 @@
-export interface UpdateScopeSchemaGeneratorSchema {
-  name: string;
-}
+export interface UpdateScopeSchemaGeneratorSchema {}
