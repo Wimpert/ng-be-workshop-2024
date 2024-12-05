@@ -52,10 +52,17 @@
         }
       }
     },
-    "fly-deploy": {
+
+    "deploy": {
       "executor": "@nx-workshop/internal-plugin:fly-deploy",
-      "dependsOn": ["build"],
-      "defaultConfiguration": "production"
+      "outputs": [],
+      "options": {
+        "distLocation": "dist/apps/movies-api",
+        "flyAppName": "movies-api-wim-holvoet"
+      },
+      "dependsOn": [
+        { "target": "build", "projects": "self", "params": "forward" }
+      ]
     }
   }
 }
