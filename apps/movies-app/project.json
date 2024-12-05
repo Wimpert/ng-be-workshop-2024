@@ -97,6 +97,18 @@
         "buildTarget": "movies-app:build",
         "staticFilePath": "dist/apps/movies-app/browser"
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx surge dist/apps/movies-app/browser ${SURGE_DOMAIN} --token ${SURGE_TOKEN}",
+            "description": "Deploy movies-app to surge"
+          }
+        ]
+      },
+      "dependsOn": ["build"]
     }
   }
 }
